@@ -28,3 +28,9 @@ https://api.jquery.com/jquery.makearray/
 
 "jQuery text() Method" from W3 Schools
 https://www.w3schools.com/jquery/html_text.asp
+
+"jQuery parent() Method" from W3 Schools
+https://stackoverflow.com/questions/27842138/get-id-of-parent-element-on-click
+
+"Get ID of parent element on click" from Stack Overflow
+https://stackoverflow.com/questions/27842138/get-id-of-parent-element-on-click
