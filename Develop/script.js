@@ -8,7 +8,35 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  //
+
+  // this function gets the div ID of the save button that was clicked.
+  $(".saveBtn").click(function() {
+    var divId = $(this).parent().attr('id')
+    console.log(divId)
+
+    // var divId = event.currentTarget.getAttribute('id')
+    // console.log(divId)
+
+    var textBlock = $(this).parent()
+    console.log(textBlock)
+
+    var textBlockId = textBlock.attr('id')
+    console.log(textBlockId)
+
+    var userText = textBlock.children(".description")
+
+    if (textBlockId == divId) {
+      var enteredText = userText.val()
+      console.log(enteredText)
+  
+      localStorage.setItem(divId, enteredText)
+    }
+
+    // var textBlock = $(this).parent().children(".description")
+    // console.log(textBlock)
+  })
+
+  
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -39,7 +67,7 @@ $(function () {
 
 
   // this uses dayjs to get the current hour.
-  var currentHour = dayjs().hour()
+  var currentHour = dayjs().format('h')
   console.log(currentHour)
 
   function colors() {
@@ -49,7 +77,7 @@ $(function () {
       console.log(hourIds[i])
       if (hourIds[i] == currentHour) {
         console.log("true")
-        hourDivsArray[currentHour - 9].classList.add("present")
+        hourDivsArray[currentHour].classList.add("present")
       
       // if hour id is less than the current hour, then sett css to "past"
       }  else if (hourIds[i] < currentHour) {
@@ -79,6 +107,27 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
+
+
+  for (var i = 9; i < 13; i++) {
+    var morningHours = localStorage.getItem(i)
+    console.log(morningHours)
+  }
+
+  for (var i = 0; i < localStorage.length; i++) {
+    var morningId = localStorage.key(i)
+    console.log(morningId)
+    if (!isNaN(morningId))
+    console.log(morningId)
+  }
+
+  for (var i = 1; i < 6; i++) {
+    var afternoonHours = localStorage.getItem(i)
+    console.log(afternoonHours)
+  }
+
+  var savedTextBlock = $(".description")
+  console.log(savedTextBlock)
   //
   // TODO: Add code to display the current date in the header of the page.
     // this uses dayjs to get the current date and time.
