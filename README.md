@@ -34,3 +34,10 @@ https://stackoverflow.com/questions/27842138/get-id-of-parent-element-on-click
 
 "Get ID of parent element on click" from Stack Overflow
 https://stackoverflow.com/questions/27842138/get-id-of-parent-element-on-click
+
+
+"display:none; not working but visibility:hidden; does" fom Stack Overflow
+https://stackoverflow.com/questions/57653704/displaynone-not-working-but-visibilityhidden-does
+
+"How to apply !important using .css()?" from Stack Overflow
+https://stackoverflow.com/questions/2655925/how-to-apply-important-using-css

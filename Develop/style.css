@@ -12,6 +12,16 @@ textarea {
   padding: 10px;
 }
 
+.hide {
+  display: none !important;
+}
+
+/* adds a border between the header and hour sections */
+.container-fluid {
+  border-top: solid;
+  border-width: 15px;
+}
+
 .description {
   white-space: pre-wrap;
 }
