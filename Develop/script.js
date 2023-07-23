@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -36,25 +37,45 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-  var currentHour = dayjs().format("h")
-  console.log(currentHour)
+  var currentHour24 = dayjs().format("H")
+  console.log(currentHour24)
 
-  var hourDiv = document.getElementById(currentHour)
+  var currentHour12 = dayjs().format('h')
+  console.log(currentHour12)
+
+
+
+  var hourDiv = document.getElementById(currentHour12)
   console.log(hourDiv)
-
+  
   hourDiv.classList.add("present")
+
 
   for (var i = 1; i < 6; i++) {
     var hourDivId = document.getElementById(i)
     console.log(hourDivId)
     divHour = hourDivId.getAttribute('id')
     console.log(divHour)
-    if (divHour > currentHour) {
+    Number(divHour) + 12
+
+    if (divHour > currentHour24) {
       hourDivId.classList.add("future")
-    } else if (divHour < currentHour || divHour <= 12 && divHour >= 9) {
+    } else if (divHour < currentHour24) {
       hourDivId.classList.add('past')
     }
   }
+
+  for (var i = 9; i < 13; i++) {
+    var hourDivId = document.getElementById(i)
+    console.log(hourDivId)
+    divHour = hourDivId.getAttribute('id')
+    console.log(divHour)
+    if (divHour < currentHour24) {
+      hourDivId.classList.add('past')
+    } else if (divHour > currentHour24) {
+      hourDivId.classList.add('future')
+    }
+}
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
@@ -82,11 +103,4 @@ $(function () {
     console.log(currentDate)
 
   $("#currentDay").text(currentDate)
-
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  
 });
