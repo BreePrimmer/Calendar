@@ -1,5 +1,19 @@
 # Calendar
 
+## Description
+
+This is an application that helps you keep track of tasks by saving your tasks for the day in a simply daily calendar. I wanted to make this project to get more practice with JavaScript and jQuery. I also got to use some Bootstrap CSS to style the page. In order to get the current time, I used dayjs. The functionality of the project will help me and other users to keep track of what we have to do for the day and when to do it, so I like that this application is practical. I had fun making this simple calendar!
+
+## Usage
+
+To use this application, you can enter text in each hour slot, and then press the save button next to it to save that text. Some text reading "saved!" will appear at the top of the screen, alerting you that your text has been saved. If you want to update the text, you can delete your old text and save the new text, and it will update. You can refresh the page and your tasks will still be there!
+
+The application also displays the date, and the hour sections will change color to be gray, red, or green if the hour is in the past, present, or future respectively.
+
+![Screenshot](./Develop/images/calendar-screenshot.JPG)
+
+Here is a link to the application:
+[website link](https://breeprimmer.github.io/Calendar/)
 
 ## Credits
 
