@@ -2,15 +2,11 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-  
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
+  // this hides the "saved!" text until the save button is clicked.
+  $("#save-text").addClass('hide')
 
-  // this function gets the div ID of the save button that was clicked.
+  // this function gets the div ID of the save button that was clicked. Then it grabs any user input
+  // that was entered and saves it to local storage.
   $(".saveBtn").click(function() {
     var divId = $(this).parent().attr('id')
     console.log(divId)
@@ -28,29 +24,29 @@ $(function () {
       console.log(enteredText)
   
       localStorage.setItem(divId, enteredText)
+      // removes the hide class from the "saved!" text.
+      $("#save-text").removeClass('hide')
+
     }
   })
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-
+  // gets the current hour in 24-hour foramt.
   var currentHour24 = dayjs().format("H")
   console.log(currentHour24)
 
+  // gets the current hour in 12-hour format
   var currentHour12 = dayjs().format('h')
   console.log(currentHour12)
 
-
-
+  // gets the div of the current hour and sets the class to "present"
   var hourDiv = document.getElementById(currentHour12)
   console.log(hourDiv)
-  
+
   hourDiv.classList.add("present")
 
-
+  // for hours 1-6, this code gets the div Id of these hours, and then adds 12 to that number/id to convert it to
+  // 24-hour time. Then, it compares this variable with the current hour, to see if it is
+  // greater than or less than the current hour to apply the correct class.
   for (var i = 1; i < 6; i++) {
     var hourDivId = document.getElementById(i)
     console.log(hourDivId)
@@ -65,6 +61,8 @@ $(function () {
     }
   }
 
+  // for hours 9-12, this code gets the div Id of these hours, then it compares this variable with the current hour, to see if it is
+  // greater than or less than the current hour to apply the correct class.
   for (var i = 9; i < 13; i++) {
     var hourDivId = document.getElementById(i)
     console.log(hourDivId)
@@ -77,11 +75,10 @@ $(function () {
     }
 }
 
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
+  // this for loop is getting the saved user data out of localstorage to display
+  // on the screen. It is getting all of the localstorage keys and values from the user,
+  // then checking to see if the key is a number, and if it is between 0 and 13. If it is,
+  // then it will retrieve its value and create the text content for the screen.
   for (var i = 0; i < localStorage.length; i++) {
     var userInputId = localStorage.key(i)
     if (!isNaN(userInputId) && userInputId > 0 && userInputId < 13) {
@@ -96,11 +93,11 @@ $(function () {
     } 
   }
 
-  // TODO: Add code to display the current date in the header of the page.
-    // this uses dayjs to get the current date and time.
-    var now = dayjs()
-    var currentDate = now.format("MMMM D, dddd, YYYY" + " hh:mm")
-    console.log(currentDate)
+  // this uses dayjs to get the current date and time.
+  var now = dayjs()
+  var currentDate = now.format("MMMM D, dddd, YYYY" + " hh:mm")
+  console.log(currentDate)
 
+  // This is grabbing the header element and displaying the current time.
   $("#currentDay").text(currentDate)
 });
